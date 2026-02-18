@@ -19,10 +19,11 @@ problems
    │   ├── library-system.md -> problem description
    │   ├── library-system.png -> ER diagram
    │   └── schema
-   │       ├── author.sql
-   │       ├── book_author.sql
-   │       ├── book.sql
-   │       └── member.sql
+   │   |   ├── author.sql
+   │   |   ├── book_author.sql
+   │   |   ├── book.sql
+   │   |   └── member.sql
+       ├── erd.dbml (ER diagram, visualize [here](https://dbdiagram.io/d))
 
 ```
 

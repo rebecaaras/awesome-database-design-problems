@@ -1,0 +1,60 @@
+Table author {
+  author_id integer [pk, increment]
+  name varchar(200) [not null]
+}
+
+Table book {
+  book_id integer [pk, increment]
+  isbn varchar(13) [not null]
+  title varchar(255) [not null]
+  publisher varchar(255) [not null]
+  year smallint [not null]
+  category varchar(100) [not null]
+  available boolean [not null]
+}
+
+Table book_author {
+  author_id integer [not null]
+  book_id integer [not null]
+
+  Indexes {
+    (author_id, book_id) [pk]
+  }
+}
+
+Table member {
+  member_id integer [pk, increment]
+  first_name varchar(100) [not null]
+  last_name varchar(100) [not null]
+  address text
+  phone varchar(15)
+  email varchar(320) [not null, unique]
+  membership_date date [not null]
+}
+
+Table librarian {
+  librarian_id integer [pk, increment]
+  name varchar(255) [not null]
+  email varchar(320) [not null]
+  hire_date date [not null]
+}
+
+Table loan {
+  loan_id integer [pk, increment]
+
+  borrow_date date [not null]
+  due_date date [not null]
+  return_date date
+
+  status varchar(8) [not null]
+
+  member_id integer [not null]
+  librarian_id integer
+  book_id integer [not null]
+}
+
+Ref: loan.book_id > book.book_id
+Ref: loan.member_id > member.member_id
+Ref: loan.librarian_id > librarian.librarian_id
+Ref: book_author.author_id > author.author_id [delete: cascade]
+Ref: book_author.book_id > book.book_id [delete: cascade]
