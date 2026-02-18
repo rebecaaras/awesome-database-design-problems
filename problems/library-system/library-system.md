@@ -7,34 +7,34 @@ This problem involves designing a relational database that tracks books, their a
 ## Entities, attributes, and relationships
 
 - **Book**: Represents the individual books in the library collection.
-    - `isbn`: International Standard Book Number (can be shared among copies).
-    - `title`: Title of the book.
-    - `author`: Author(s) of the book.
-    - `publisher`: Publisher of the book.
-    - `year`: Year of publication.
-    - `category`: Genre or subject of the book.
-    - `available`: Boolean or status flag indicating if the book is available for lending.
+  - `isbn`: International Standard Book Number (can be shared among copies).
+  - `title`: Title of the book.
+  - `author`: Author(s) of the book.
+  - `publisher`: Publisher of the book.
+  - `year`: Year of publication.
+  - `category`: Genre or subject of the book.
+  - `available`: Boolean or status flag indicating if the book is available for lending.
 
 - **Member**: Represents library users who can borrow books.
-    - `first name`: First name of the member.
-    - `last name`: Last name of the member.
-    - `address`: Mailing address.
-    - `phone`: Contact number.
-    - `email`: Email address.
-    - `membership date`: Date the member registered.
+  - `first name`: First name of the member.
+  - `last name`: Last name of the member.
+  - `address`: Mailing address.
+  - `phone`: Contact number.
+  - `email`: Email address.
+  - `membership date`: Date the member registered.
 
 - **Loan**: Represents a book borrowing transaction.
-    - `book id`: Foreign key referencing the `Book`.
-    - `member id`: Foreign key referencing the `Member`.
-    - `borrow date`: Date the book was borrowed.
-    - `due date`: Date the book is due for return.
-    - `return date`: Date the book was actually returned (can be NULL if not yet returned).
-    - `status`: Status of the loan (e.g., "borrowed", "returned", "overdue").
+  - `book id`: Foreign key referencing the `Book`.
+  - `member id`: Foreign key referencing the `Member`.
+  - `borrow date`: Date the book was borrowed.
+  - `due date`: Date the book is due for return.
+  - `return date`: Date the book was actually returned (can be NULL if not yet returned).
+  - `status`: Status of the loan (e.g., "borrowed", "returned", "overdue").
 
 - **Librarian**: Staff members responsible for managing loans.
-    - `name`: Name of the librarian.
-    - `email`: Contact email.
-    - `hire date`: Date the librarian was hired.
+  - `name`: Name of the librarian.
+  - `email`: Contact email.
+  - `hire date`: Date the librarian was hired.
 
 Beyond the entities and attributes, you have also identified the following relationships:
 
@@ -47,12 +47,12 @@ Beyond the entities and attributes, you have also identified the following relat
 
 ## Constraints and other information
 
-- A book cannot be borrowed if it is already marked as unavailable.
-- Due dates are typically computed based on the borrow date plus a fixed lending period (e.g., 14 days).
+- A book cannot be borrowed if it is already marked as unavailable. (function)
+- Due dates are typically computed based on the borrow date plus a fixed lending period (e.g., 14 days). (function)?
 - The `return date` must not be earlier than the `borrow date`.
-- The system may flag overdue loans automatically based on `due date` and current date.
+- The system may flag overdue loans automatically based on `due date` and current date. (function)
 - Members with overdue books may not be allowed to borrow new books.
-- The `available` status in the `Book` table should be updated appropriately upon loan and return.
+- The `available` status in the `Book` table should be updated appropriately upon loan and return. (function)
 - Inventory design can be expanded to include physical location (e.g., shelf and section).
 - The system should maintain a history of loans for auditing purposes, including tracking overdue books and fines if applicable.
 
