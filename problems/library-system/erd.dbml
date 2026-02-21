@@ -53,6 +53,11 @@ Table loan {
   book_id integer [not null]
 }
 
+Table holiday {
+  holiday_date date [pk, not null]
+  description text [not null]
+}
+
 Ref: loan.book_id > book.book_id
 Ref: loan.member_id > member.member_id
 Ref: loan.librarian_id > librarian.librarian_id
